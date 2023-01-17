@@ -11,13 +11,6 @@ namespace ContractManagementBL
 
     public class ContractManagementValidator : IContractManagementValidator
     {
-        private readonly IConfiguration _configuration;
-
-        public ContractManagementValidator(IConfiguration configuration)
-        {
-            _configuration = configuration;
-        }
-
         public void ValidateCustomer(EditCustomerAddressRequest editCustomerAddressRequest)
         {
             ValidateId(editCustomerAddressRequest.ID);
