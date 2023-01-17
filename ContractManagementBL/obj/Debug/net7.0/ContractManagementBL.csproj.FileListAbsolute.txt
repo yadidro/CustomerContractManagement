@@ -1,0 +1,15 @@
+C:\Users\97252\source\repos\CustomerContractManagement\ContractManagementBL\bin\Debug\net7.0\ContractManagementBL.deps.json
+C:\Users\97252\source\repos\CustomerContractManagement\ContractManagementBL\bin\Debug\net7.0\ContractManagementBL.dll
+C:\Users\97252\source\repos\CustomerContractManagement\ContractManagementBL\bin\Debug\net7.0\ContractManagementBL.pdb
+C:\Users\97252\source\repos\CustomerContractManagement\ContractManagementBL\obj\Debug\net7.0\ContractManagementBL.csproj.AssemblyReference.cache
+C:\Users\97252\source\repos\CustomerContractManagement\ContractManagementBL\obj\Debug\net7.0\ContractManagementBL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\97252\source\repos\CustomerContractManagement\ContractManagementBL\obj\Debug\net7.0\ContractManagementBL.AssemblyInfoInputs.cache
+C:\Users\97252\source\repos\CustomerContractManagement\ContractManagementBL\obj\Debug\net7.0\ContractManagementBL.AssemblyInfo.cs
+C:\Users\97252\source\repos\CustomerContractManagement\ContractManagementBL\obj\Debug\net7.0\ContractManagementBL.csproj.CoreCompileInputs.cache
+C:\Users\97252\source\repos\CustomerContractManagement\ContractManagementBL\obj\Debug\net7.0\ContractManagementBL.dll
+C:\Users\97252\source\repos\CustomerContractManagement\ContractManagementBL\obj\Debug\net7.0\refint\ContractManagementBL.dll
+C:\Users\97252\source\repos\CustomerContractManagement\ContractManagementBL\obj\Debug\net7.0\ContractManagementBL.pdb
+C:\Users\97252\source\repos\CustomerContractManagement\ContractManagementBL\obj\Debug\net7.0\ref\ContractManagementBL.dll
+C:\Users\97252\source\repos\CustomerContractManagement\ContractManagementBL\bin\Debug\net7.0\ContractManagementDAL.dll
+C:\Users\97252\source\repos\CustomerContractManagement\ContractManagementBL\bin\Debug\net7.0\ContractManagementDAL.pdb
+C:\Users\97252\source\repos\CustomerContractManagement\ContractManagementBL\obj\Debug\net7.0\ContractManagementBL.csproj.CopyComplete

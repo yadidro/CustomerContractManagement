@@ -1,0 +1,14 @@
+C:\Users\97252\source\repos\CustomerContractManagement\ContractManagementDAL\obj\Debug\net7.0\ContractManagementDAL.csproj.AssemblyReference.cache
+C:\Users\97252\source\repos\CustomerContractManagement\ContractManagementDAL\obj\Debug\net7.0\ContractManagementDAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\97252\source\repos\CustomerContractManagement\ContractManagementDAL\obj\Debug\net7.0\ContractManagementDAL.AssemblyInfoInputs.cache
+C:\Users\97252\source\repos\CustomerContractManagement\ContractManagementDAL\obj\Debug\net7.0\ContractManagementDAL.AssemblyInfo.cs
+C:\Users\97252\source\repos\CustomerContractManagement\ContractManagementDAL\obj\Debug\net7.0\ContractManagementDAL.csproj.CoreCompileInputs.cache
+C:\Users\97252\source\repos\CustomerContractManagement\ContractManagementDAL\bin\Debug\net7.0\ContractManagementDAL.deps.json
+C:\Users\97252\source\repos\CustomerContractManagement\ContractManagementDAL\bin\Debug\net7.0\ContractManagementDAL.runtimeconfig.json
+C:\Users\97252\source\repos\CustomerContractManagement\ContractManagementDAL\bin\Debug\net7.0\ContractManagementDAL.dll
+C:\Users\97252\source\repos\CustomerContractManagement\ContractManagementDAL\bin\Debug\net7.0\ContractManagementDAL.pdb
+C:\Users\97252\source\repos\CustomerContractManagement\ContractManagementDAL\obj\Debug\net7.0\ContractManagementDAL.dll
+C:\Users\97252\source\repos\CustomerContractManagement\ContractManagementDAL\obj\Debug\net7.0\refint\ContractManagementDAL.dll
+C:\Users\97252\source\repos\CustomerContractManagement\ContractManagementDAL\obj\Debug\net7.0\ContractManagementDAL.pdb
+C:\Users\97252\source\repos\CustomerContractManagement\ContractManagementDAL\obj\Debug\net7.0\ContractManagementDAL.genruntimeconfig.cache
+C:\Users\97252\source\repos\CustomerContractManagement\ContractManagementDAL\obj\Debug\net7.0\ref\ContractManagementDAL.dll
