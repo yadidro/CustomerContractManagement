@@ -27,7 +27,7 @@ namespace ContractManagementBL
             _contractManagementValidator.ValidateId(id);
             var response = _contractManagementData.GetCustomerInformationById(id);
             if (response == null)
-                throw new Exception("something wrong with DB connection");
+                throw new Exception("Something wrong with DB connection");
             return response;
         }
 
@@ -36,7 +36,7 @@ namespace ContractManagementBL
             _contractManagementValidator.ValidateId(id);
             var response = _contractManagementData.CheckCustomerExistById(id);
             if (response == null)
-                throw new Exception("something wrong with DB connection");
+                throw new Exception("Something wrong with DB connection");
             return (bool)response;
         }
         
