@@ -3,8 +3,6 @@ namespace CustomerContractManagement.ContractManagementDAL.Models
 {
     public class Contract
     {
-        public int ID { get; set; }
-
         public string ContractNumber { get; set; }
 
         public ContractType ContractType { get; set; }

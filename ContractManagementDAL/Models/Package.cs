@@ -3,8 +3,6 @@ namespace CustomerContractManagement.ContractManagementDAL.Models
 {
     public class Package
     {
-        public int ID { get; set; }
-
         public PackageType PackageType { get; set; }
 
         public string PackageName { get; set; }

@@ -8,7 +8,7 @@ namespace ContractManagementDAL.DB
 {
     public interface IContractManagementData
     {
-        public Customer GetCustomerInformationById(string id);
+        public Customer? GetCustomerInformationById(string id);
         public bool? CheckCustomerExistById(string id);
     }
 
@@ -21,7 +21,7 @@ namespace ContractManagementDAL.DB
             _configuration = configuration;
         }
 
-        public Customer GetCustomerInformationById(string id)
+        public Customer? GetCustomerInformationById(string id)
         {
             using var conn =
                 new SqlConnection(_configuration.GetConnectionString("DatabaseConnection"));
@@ -79,27 +79,30 @@ namespace ContractManagementDAL.DB
                         customer.LastName = (string)rdr["LastName"];
                         customer.Address = new Address
                         {
-                            City = (string)rdr["City"],
-                            Street = (string)rdr["Street"],
-                            HomeNumber = (string)rdr["HomeNumber"],
-                            PostalCode = (string)rdr["PostalCode"]
+                            City = rdr["City"] != DBNull.Value? (string)rdr["City"]:"",
+                            Street = rdr["Street"] != DBNull.Value ? (string)rdr["Street"] : "",
+                            HomeNumber = rdr["HomeNumber"] != DBNull.Value ? (string)rdr["HomeNumber"] : "",
+                            PostalCode = rdr["PostalCode"] != DBNull.Value ? (string)rdr["PostalCode"] : ""
                         };
                     }
 
-                    var contractId = (int)rdr["ContractID"];
-                    if (contracts.ContainsKey(contractId))
+                    var contractId = rdr["ContractID"];
+                    if (contractId != DBNull.Value)
                     {
-                        contracts[contractId].Packages?.Add(new Package()
+                        
+                        if (contracts.ContainsKey((int)contractId))
                         {
-                            PackageType = (PackageType)rdr["PackageType"],
-                            PackageName = (string)rdr["PackageName"],
-                            Size = (int)rdr["Size"],
-                            Utilzation = (int)rdr["Utilzation"]
-                        });
-                    }
-                    else
-                    {
-                        contracts.Add(contractId, new Contract
+                            contracts[(int)contractId].Packages?.Add(new Package()
+                            {
+                                PackageType = (PackageType)rdr["PackageType"],
+                                PackageName = (string)rdr["PackageName"],
+                                Size = (int)rdr["Size"],
+                                Utilzation = (int)rdr["Utilzation"]
+                            });
+                        }
+                        else
+                        {
+                            contracts.Add((int)contractId, new Contract
                             {
                                 ContractNumber = (string)rdr["ContractNumber"],
                                 ContractType = (ContractType)rdr["ContractType"],
@@ -114,7 +117,8 @@ namespace ContractManagementDAL.DB
                                     }
                                 }
                             }
-                        );
+                            );
+                        }
                     }
                 }
             }
