@@ -10,8 +10,7 @@ namespace ContractManagementDAL.DB
     {
         public Customer? GetCustomerInformationById(string id);
         public bool? CheckCustomerExistById(string id);
-
-        public void EditCustomerAddress(Customer customer);
+        public void EditCustomerAddress(Customer Customer);
     }
 
     public class ContractManagementData : IContractManagementData

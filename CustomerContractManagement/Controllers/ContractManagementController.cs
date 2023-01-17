@@ -68,14 +68,14 @@ public class ContractManagementController : ControllerBase
 
     [Route("EditCustomer")]
     [HttpPost]
-    public IActionResult PostEditCustomer([FromBody] Customer customer)
+    public IActionResult PostEditCustomer([FromBody] EditCustomerAddressRequest editCustomerAddressRequest)
     {
         try
         {
             _logger.LogInformation("Edit Customer request at {DT}",
            DateTime.UtcNow.ToLongTimeString());
     
-            _contractManagementRepository.EditCustomerAddress(customer);
+            _contractManagementRepository.EditCustomerAddress(editCustomerAddressRequest);
     
             _logger.LogInformation("EditCustomer successfully handled {DT}",
           DateTime.UtcNow.ToLongTimeString());

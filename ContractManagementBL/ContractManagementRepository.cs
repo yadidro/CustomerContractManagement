@@ -7,20 +7,24 @@ namespace ContractManagementBL
     {
         public Customer GetCustomerInformationById(string id);
         public bool CheckCustomerExistById(string id);
-        public void EditCustomerAddress(Customer customer);
+        public void EditCustomerAddress(EditCustomerAddressRequest editCustomerAddressRequest);
     }
 
     public class ContractManagementRepository : IContractManagementRepository
     {
         private readonly IContractManagementData _contractManagementData;
 
-        public ContractManagementRepository(IContractManagementData contractManagementData)
+        private readonly IContractManagementValidator _contractManagementValidator;
+
+        public ContractManagementRepository(IContractManagementData contractManagementData, IContractManagementValidator contractManagementValidator)
         {
             _contractManagementData = contractManagementData;
+            _contractManagementValidator = contractManagementValidator;
         }
 
         public Customer GetCustomerInformationById(string id)
         {
+            _contractManagementValidator.ValidateId(id);
             var response = _contractManagementData.GetCustomerInformationById(id);
             if (response == null)
                 throw new Exception("something wrong with DB connection");
@@ -29,14 +33,29 @@ namespace ContractManagementBL
 
         public bool CheckCustomerExistById(string id)
         {
+            _contractManagementValidator.ValidateId(id);
             var response = _contractManagementData.CheckCustomerExistById(id);
             if (response == null)
                 throw new Exception("something wrong with DB connection");
             return (bool)response;
         }
         
-        public void EditCustomerAddress(Customer customer)
+        public void EditCustomerAddress(EditCustomerAddressRequest editCustomerAddressRequest)
         {
+            _contractManagementValidator.ValidateCustomer(editCustomerAddressRequest);
+            
+            var customer = new Customer
+            {
+                ID = editCustomerAddressRequest.ID,
+                Address = new Address
+                {
+                    City = editCustomerAddressRequest.City,
+                    Street = editCustomerAddressRequest.Street,
+                    HomeNumber = editCustomerAddressRequest.HomeNumber,
+                    PostalCode = editCustomerAddressRequest.PostalCode
+                },
+            };
+
             _contractManagementData.EditCustomerAddress(customer);
         }
     }
