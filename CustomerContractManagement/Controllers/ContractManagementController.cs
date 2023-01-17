@@ -1,5 +1,4 @@
 using ContractManagementBL;
-using CustomerContractManagement.ContractManagementDAL.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ContractManagementAPI.Controllers;
