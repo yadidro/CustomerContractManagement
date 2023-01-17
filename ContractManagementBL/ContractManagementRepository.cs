@@ -7,6 +7,7 @@ namespace ContractManagementBL
     {
         public Customer GetCustomerInformationById(string id);
         public bool CheckCustomerExistById(string id);
+        public void EditCustomerAddress(Customer customer);
     }
 
     public class ContractManagementRepository : IContractManagementRepository
@@ -32,6 +33,11 @@ namespace ContractManagementBL
             if (response == null)
                 throw new Exception("something wrong with DB connection");
             return (bool)response;
+        }
+        
+        public void EditCustomerAddress(Customer customer)
+        {
+            _contractManagementData.EditCustomerAddress(customer);
         }
     }
 }

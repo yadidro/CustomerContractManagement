@@ -1,4 +1,5 @@
 using ContractManagementBL;
+using CustomerContractManagement.ContractManagementDAL.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ContractManagementAPI.Controllers;
@@ -65,27 +66,27 @@ public class ContractManagementController : ControllerBase
         }
     }
 
-    // [Route("bookings")]
-    // [HttpPost]
-    // public IActionResult PostBookings([FromBody] BookingRequest bookingRequest)
-    // {
-    //     try
-    //     {
-    //         _logger.LogInformation("Got booking request at {DT}",
-    //        DateTime.UtcNow.ToLongTimeString());
-    //
-    //         _bookingRepository.SaveBooking(bookingRequest);
-    //
-    //         _logger.LogInformation("booking request successfully handled {DT}",
-    //       DateTime.UtcNow.ToLongTimeString());
-    //
-    //         return Ok();
-    //     }
-    //     catch (Exception e)
-    //     {
-    //         _logger.LogError(e.Message);
-    //
-    //         return BadRequest(e.Message);
-    //     }
-    // }
+    [Route("EditCustomer")]
+    [HttpPost]
+    public IActionResult PostEditCustomer([FromBody] Customer customer)
+    {
+        try
+        {
+            _logger.LogInformation("Edit Customer request at {DT}",
+           DateTime.UtcNow.ToLongTimeString());
+    
+            _contractManagementRepository.EditCustomerAddress(customer);
+    
+            _logger.LogInformation("EditCustomer successfully handled {DT}",
+          DateTime.UtcNow.ToLongTimeString());
+    
+            return Ok();
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e.Message);
+    
+            return BadRequest(e.Message);
+        }
+    }
 }
