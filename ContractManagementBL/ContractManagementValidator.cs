@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace ContractManagementBL
 {
