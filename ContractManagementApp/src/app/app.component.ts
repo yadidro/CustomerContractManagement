@@ -25,8 +25,8 @@ export class AppComponent {
   constructor(private idle: Idle, private keepalive: Keepalive, 
     private router: Router, private modalService: BsModalService, private appService: AppService) {
     // sets a timeout period of 5 minutes.
-    idle.setTimeout(5);
-    idle.setIdle(5);
+    idle.setTimeout(300);
+    idle.setIdle(300);
     // sets the default interrupts, in this case, things like clicks, scrolls, touches to the document
     idle.setInterrupts(DEFAULT_INTERRUPTSOURCES);
 
