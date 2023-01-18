@@ -8,7 +8,7 @@ export interface Address {
 export interface Customer {
   id: string;
   firstName: string;
-  lastName: string;
+  lastName: string; 
   address: Address;
   contracts: Contract[];
 }
