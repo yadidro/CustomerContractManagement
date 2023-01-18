@@ -13,6 +13,9 @@ export class DashboardComponent implements OnInit {
   editmode: boolean = false;
   public currentCustomer: Customer | undefined;
   public userId: string = '';
+  packageTypes:string[]=Object.values(PackageType)
+  contractTypes:string[]=Object.values(ContractType)
+
   constructor(private appService: AppService) { }
 
   ngOnInit() {
@@ -35,29 +38,12 @@ export class DashboardComponent implements OnInit {
     );
   }
   getContractType(value: string) {
-    switch (Number(value)) {
-      case 0:
-        return ContractType.CostPlus
-      case 1:
-        return ContractType.FixedPrice
-      case 2:
-        return ContractType.TimeAndMaterial
-      default:
-        return ContractType.TimeAndMaterial
-    }
+    return this.contractTypes[Number(value)];
   }
+
   getPackgeType(value: string) {
-    switch (Number(value)) {
-      case 0:
-        return PackageType.Extra
-      case 1:
-        return PackageType.Full
-      case 2:
-        return PackageType.Partly
-      default:
-        return PackageType.Extra
+    return this.packageTypes[Number(value)];
     }
-  }
 
   editAddressDetails() {
     this.editmode = true;
@@ -76,11 +62,11 @@ export class DashboardComponent implements OnInit {
       this.textError = 'Text should not contain any special character';
       return;
     }
-    
+
     this.appService.EditCustomer(this.customerEditRequest).subscribe(
       () => {
-          this.GetCustomer();
-          this.textError = 'Address details hs been updated successfully';
+        this.GetCustomer();
+        this.textError = 'Address details hs been updated successfully';
       },
       (err) => {
         console.log(err);
@@ -90,7 +76,7 @@ export class DashboardComponent implements OnInit {
   }
 
   checkInputValid(input: string): boolean {
-      return /^$|^[a-zA-ZÀ-ÖØ-öø-ÿ0-9 ]+$/.test(input);
+    return /^$|^[a-zA-ZÀ-ÖØ-öø-ÿ0-9 ]+$/.test(input);
   }
 
 }

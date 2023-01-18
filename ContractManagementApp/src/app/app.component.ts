@@ -20,8 +20,6 @@ export class AppComponent {
   title = 'angular-idle-timeout';
   showLogOut=false;
 
-  //@ViewChild('childModal', { static: false }) childModal;
-
   constructor(private idle: Idle, private keepalive: Keepalive, 
     private router: Router, private modalService: BsModalService, private appService: AppService) {
     // sets a timeout period of 5 minutes.

@@ -49,8 +49,6 @@ export class LoginComponent implements OnInit {
   }
 }
 
-
-
 export class User {
   public id: string = '';
   constructor(
