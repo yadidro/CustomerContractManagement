@@ -24,8 +24,9 @@ export class AppComponent {
 
   constructor(private idle: Idle, private keepalive: Keepalive, 
     private router: Router, private modalService: BsModalService, private appService: AppService) {
-    // sets a timeout period of 5 minutes. after 10 seconds of inactivity, the user will be considered timed out.
-    idle.setTimeout(300);
+    // sets a timeout period of 5 minutes.
+    idle.setTimeout(5);
+    idle.setIdle(5);
     // sets the default interrupts, in this case, things like clicks, scrolls, touches to the document
     idle.setInterrupts(DEFAULT_INTERRUPTSOURCES);
 
@@ -66,6 +67,7 @@ export class AppComponent {
         idle.stop();
       }
     })
+    this.logout();
   }
 
   reset() {
