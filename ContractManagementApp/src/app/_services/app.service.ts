@@ -3,6 +3,7 @@ import { Subject, Observable, Observer } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Customer } from '../models/customer';
+import { CustomerRequest } from '../dashboard/dashboard.component';
 
 @Injectable({
   providedIn: 'root'
@@ -32,5 +33,9 @@ export class AppService {
 
   GetCustomer(id: string) {
     return this.http.get<Customer>(this.apiUrl + 'GetCustomer?id=' + id);
+  }
+
+  EditCustomer(customerRequest: CustomerRequest) {
+    return this.http.post(this.apiUrl + 'EditCustomer',customerRequest);
   }
 }

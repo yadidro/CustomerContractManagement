@@ -1,26 +1,49 @@
-
 <div class="container mgntop">
-    <h2>{{ currentCustomer?.firstName}} {{ currentCustomer?.lastName}}</h2>         
+    <h2>{{ currentCustomer?.firstName}} {{ currentCustomer?.lastName}}</h2>
     <table class="table table-hover">
         <tbody>
             <li>City: {{ currentCustomer?.address?.city}}</li>
-                <li>Street: {{ currentCustomer?.address?.street}}</li>
-                    <li>Home Number: {{ currentCustomer?.address?.homeNumber}}</li>
-                        <li>Postal Code: {{ currentCustomer?.address?.postalCode}}</li>
+            <li>Street: {{ currentCustomer?.address?.street}}</li>
+            <li>Home Number: {{ currentCustomer?.address?.homeNumber}}</li>
+            <li>Postal Code: {{ currentCustomer?.address?.postalCode}}</li>
+            <button class="btn btn-primary" (click)="editAddressDetails()">
+                Edit address details
+            </button>
+            <div class="CommentSaved" *ngIf="this.editmode">
+                <div class="textError" *ngIf="textError != ''">
+                    <span style="font-style: italic">{{ textError }}</span>
+                </div>
+                <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+                <li>City:<input type="text" [(ngModel)]="customerEditRequest.city" name="city" class="form-control"
+                        placeholder="Enter city"></li>
+                <li>Street:<input type="text" [(ngModel)]="customerEditRequest.street" name="street"  class="form-control"
+                        placeholder="Enter street"></li>
+                <li>Home Number:<input type="text" [(ngModel)]="customerEditRequest.homeNumber" name="homeNumber"  class="form-control"
+                        placeholder="Enter home number"></li>
+                <li>Postal Code:<input type="text" [(ngModel)]="customerEditRequest.postalCode" name="postalCode"  class="form-control"
+                        placeholder="Enter postal code"></li>
+                <div class="btnholder">
+                    <button type="submit" class="btn btn-danger justify-content-md-center">Submit</button>
+                </div>
+            </form>
+                <button class="btn btn-primary" (click)="hideAddressDetails()">
+                    Hide edit address details
+                </button>
+            </div>
             <ol *ngFor="let contract of currentCustomer?.contracts">
                 <tr>
                     <li>Contract number: {{contract.contractNumber}}</li>
-                        <li>Contract type:  {{getContractType(contract.contractType)}}</li>
+                    <li>Contract type: {{getContractType(contract.contractType)}}</li>
                     <ol *ngFor="let package of contract?.packages">
-                        <tr>
-                            <li>Package type: {{getPackgeType(package.packageType)}}</li>
-                            <li>Package name: {{package.packageName}}</li>
-                            <li>Package size: {{package.size}}</li>
-                            <li>Package utilzation: {{package.utilzation}}</li>
-                        </tr>
-                      </ol>
+                <tr>
+                    <li>Package type: {{getPackgeType(package.packageType)}}</li>
+                    <li>Package name: {{package.packageName}}</li>
+                    <li>Package size: {{package.size}}</li>
+                    <li>Package utilzation: {{package.utilzation}}</li>
                 </tr>
-              </ol>
+            </ol>
+            </tr>
+            </ol>
         </tbody>
     </table>
 </div>
