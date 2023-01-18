@@ -1,8 +1,7 @@
 USE [master]
 GO
-/****** Object:  Database [ContractManagement]    Script Date: 18/01/2023 00:38:39 ******/
+/****** Object:  Database [ContractManagement]    Script Date: 19/01/2023 00:54:00 ******/
 CREATE DATABASE [ContractManagement]
-GO
 ALTER DATABASE [ContractManagement] SET COMPATIBILITY_LEVEL = 150
 GO
 IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
@@ -74,7 +73,7 @@ ALTER DATABASE [ContractManagement] SET QUERY_STORE = OFF
 GO
 USE [ContractManagement]
 GO
-/****** Object:  Table [dbo].[__EFMigrationsHistory]    Script Date: 18/01/2023 00:38:39 ******/
+/****** Object:  Table [dbo].[__EFMigrationsHistory]    Script Date: 19/01/2023 00:54:00 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -88,7 +87,7 @@ CREATE TABLE [dbo].[__EFMigrationsHistory](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Contract]    Script Date: 18/01/2023 00:38:39 ******/
+/****** Object:  Table [dbo].[Contract]    Script Date: 19/01/2023 00:54:00 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -104,7 +103,7 @@ CREATE TABLE [dbo].[Contract](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Customers]    Script Date: 18/01/2023 00:38:39 ******/
+/****** Object:  Table [dbo].[Customers]    Script Date: 19/01/2023 00:54:00 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -123,7 +122,7 @@ CREATE TABLE [dbo].[Customers](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Package]    Script Date: 18/01/2023 00:38:39 ******/
+/****** Object:  Table [dbo].[Package]    Script Date: 19/01/2023 00:54:00 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -149,11 +148,11 @@ INSERT [dbo].[Contract] ([ID], [ContractNumber], [ContractType], [CustomerID]) V
 GO
 INSERT [dbo].[Contract] ([ID], [ContractNumber], [ContractType], [CustomerID]) VALUES (2, N'2', 2, N'545496966')
 GO
-INSERT [dbo].[Contract] ([ID], [ContractNumber], [ContractType], [CustomerID]) VALUES (3, N'3', 3, N'305022311')
+INSERT [dbo].[Contract] ([ID], [ContractNumber], [ContractType], [CustomerID]) VALUES (3, N'2', 0, N'305022311')
 GO
 SET IDENTITY_INSERT [dbo].[Contract] OFF
 GO
-INSERT [dbo].[Customers] ([ID], [FirstName], [LastName], [City], [Street], [HomeNumber], [PostalCode]) VALUES (N'305022311', N'Roy', N'Yadid', N'Tel Aviv', N'hagilad', N'6', N'43434')
+INSERT [dbo].[Customers] ([ID], [FirstName], [LastName], [City], [Street], [HomeNumber], [PostalCode]) VALUES (N'305022311', N'Roy', N'Yadid', N'Tel Aviv', N'Bazel', N'19', N'6565567')
 GO
 INSERT [dbo].[Customers] ([ID], [FirstName], [LastName], [City], [Street], [HomeNumber], [PostalCode]) VALUES (N'545496966', N'Tomer', N'Levi', N'Tel Aviv', N'Bazel', N'4', N'565566')
 GO
@@ -169,17 +168,19 @@ INSERT [dbo].[Package] ([ID], [PackageType], [PackageName], [Size], [Utilzation]
 GO
 INSERT [dbo].[Package] ([ID], [PackageType], [PackageName], [Size], [Utilzation], [ContractID]) VALUES (7, 1, N'Extra', 10, 3, 2)
 GO
+INSERT [dbo].[Package] ([ID], [PackageType], [PackageName], [Size], [Utilzation], [ContractID]) VALUES (9, 1, N'Partly', 10, 1, 3)
+GO
 SET IDENTITY_INSERT [dbo].[Package] OFF
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [IX_Contract_CustomerID]    Script Date: 18/01/2023 00:38:39 ******/
+/****** Object:  Index [IX_Contract_CustomerID]    Script Date: 19/01/2023 00:54:00 ******/
 CREATE NONCLUSTERED INDEX [IX_Contract_CustomerID] ON [dbo].[Contract]
 (
 	[CustomerID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_Package_ContractID]    Script Date: 18/01/2023 00:38:39 ******/
+/****** Object:  Index [IX_Package_ContractID]    Script Date: 19/01/2023 00:54:00 ******/
 CREATE NONCLUSTERED INDEX [IX_Package_ContractID] ON [dbo].[Package]
 (
 	[ContractID] ASC
@@ -190,7 +191,7 @@ REFERENCES [dbo].[Contract] ([ID])
 GO
 ALTER TABLE [dbo].[Package] CHECK CONSTRAINT [FK_Package_Contract_ContractID]
 GO
-/****** Object:  StoredProcedure [dbo].[CheckCustomerExistById]    Script Date: 18/01/2023 00:38:39 ******/
+/****** Object:  StoredProcedure [dbo].[CheckCustomerExistById]    Script Date: 19/01/2023 00:54:00 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -210,7 +211,7 @@ BEGIN
 	where Customers.ID=@ID
 END
 GO
-/****** Object:  StoredProcedure [dbo].[EditCustomerAddress]    Script Date: 18/01/2023 00:38:39 ******/
+/****** Object:  StoredProcedure [dbo].[EditCustomerAddress]    Script Date: 19/01/2023 00:54:00 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -241,7 +242,7 @@ BEGIN
 	where Customers.ID=@ID
 END
 GO
-/****** Object:  StoredProcedure [dbo].[GetCustomerInformationById]    Script Date: 18/01/2023 00:38:39 ******/
+/****** Object:  StoredProcedure [dbo].[GetCustomerInformationById]    Script Date: 19/01/2023 00:54:00 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
