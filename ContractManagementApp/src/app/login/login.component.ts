@@ -13,31 +13,46 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router, private appService: AppService) { }
 
   model: User = new User();
-
+  textError: string = '';
   ngOnInit() {
   }
 
   onSubmit(loginForm: NgForm) {
     console.log(this.model)
-    this.appService.checkCustomer('656').subscribe(
+    if (!loginForm.valid) {
+      this.textError = 'Empty field is not allowed';
+      return;
+    }
+    if (!this.checkIdValid(this.model.id)) {
+      this.textError = 'Id should contain numbers only';
+      return;
+    }
+    this.appService.checkCustomer(this.model.id).subscribe(
       (res: boolean) => {
-        if (loginForm.valid && res) {
+        if (res) {
+          localStorage.setItem('id', this.model.id);
           this.appService.setUserLoggedIn(true)
           this.router.navigate(['/dashboard']);
         }
-        //this.textError = '';
+        else
+          this.textError = 'This id not exist on out system';
       },
       (err) => {
         console.log(err);
-        //  this.textError = 'An error has occured, please try again later';
+        this.textError = err;
       }
     );
   }
-}
-export class User {
 
-  public userName: string = '';
-  public password: string = '';
+  checkIdValid(id: string): boolean {
+    return /^$|^[0-9 ]+$/.test(id);
+  }
+}
+
+
+
+export class User {
+  public id: string = '';
   constructor(
 
   ) { }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject, Observable, Observer } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Customer } from '../models/customer';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,10 @@ export class AppService {
   }
 
   checkCustomer(id: string) {
-    return this.http.get<boolean>(this.apiUrl+'CheckCustomer?id='+id);
+    return this.http.get<boolean>(this.apiUrl + 'CheckCustomer?id=' + id);
+  }
+
+  GetCustomer(id: string) {
+    return this.http.get<Customer>(this.apiUrl + 'GetCustomer?id=' + id);
   }
 }

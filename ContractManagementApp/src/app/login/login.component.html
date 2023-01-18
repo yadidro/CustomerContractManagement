@@ -8,13 +8,11 @@
                         class="alert alert-danger">
                      Please Fill the form
                    </div>
-                <label for="exampleInputEmail1">User Name</label>
-                <input type="text" [(ngModel)]="model.userName" class="form-control" required name="userName" aria-describedby="emailHelp" placeholder="Enter Username">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your details.</small>
-                </div>
-                <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" [(ngModel)]="model.password" class="form-control" name="password" required placeholder="Password">
+                   <div class="textError" *ngIf="textError != ''">
+                    <span style="font-style: italic">{{ textError }}</span>
+                  </div>
+                <label for="exampleInputEmail1">ID</label>
+                <input type="text" [(ngModel)]="model.id" class="form-control" required name="id" placeholder="Enter id">
                 </div>
                 <div class="btnholder">
                     <button type="submit" class="btn btn-danger justify-content-md-center">Submit</button>
