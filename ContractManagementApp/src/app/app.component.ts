@@ -18,12 +18,10 @@ export class AppComponent {
 
   idleState = 'Not started.';
   timedOut = false;
-  lastPing?: Date = null;
+  lastPing?: Date;
   title = 'angular-idle-timeout';
 
-  public modalRef: BsModalRef;
-
-  @ViewChild('childModal', { static: false }) childModal: ModalDirective;
+  //@ViewChild('childModal', { static: false }) childModal;
 
   constructor(private idle: Idle, private keepalive: Keepalive, 
     private router: Router, private modalService: BsModalService, private appService: AppService) {
@@ -41,7 +39,7 @@ export class AppComponent {
     });
     
     idle.onTimeout.subscribe(() => {
-      this.childModal.hide();
+     // this.childModal.hide();
       this.idleState = 'Timed out!';
       this.timedOut = true;
       console.log(this.idleState);
@@ -51,7 +49,7 @@ export class AppComponent {
     idle.onIdleStart.subscribe(() => {
         this.idleState = 'You\'ve gone idle!'
         console.log(this.idleState);
-        this.childModal.show();
+      //  this.childModal.show();
     });
     
     idle.onTimeoutWarning.subscribe((countdown) => {
@@ -83,16 +81,16 @@ export class AppComponent {
   }
 
   hideChildModal(): void {
-    this.childModal.hide();
+    //this.childModal.hide();
   }
 
   stay() {
-    this.childModal.hide();
+    //this.childModal.hide();
     this.reset();
   }
 
   logout() {
-    this.childModal.hide();
+   // this.childModal.hide();
     this.appService.setUserLoggedIn(false);
     this.router.navigate(['/']);
   }
