@@ -19,21 +19,28 @@ export class LoginComponent implements OnInit {
 
   onSubmit(loginForm: NgForm) {
     console.log(this.model)
-    if(loginForm.valid) {
-      this.appService.setUserLoggedIn(true)
-      this.router.navigate(['/dashboard']);
-    }
+    this.appService.checkCustomer('656').subscribe(
+      (res: boolean) => {
+        if (loginForm.valid && res) {
+          this.appService.setUserLoggedIn(true)
+          this.router.navigate(['/dashboard']);
+        }
+        //this.textError = '';
+      },
+      (err) => {
+        console.log(err);
+        //  this.textError = 'An error has occured, please try again later';
+      }
+    );
   }
-
 }
-
 export class User {
-  
-  public userName: string='';
-  public password: string='';
+
+  public userName: string = '';
+  public password: string = '';
   constructor(
-    
-  ) {  }
+
+  ) { }
 
 
 

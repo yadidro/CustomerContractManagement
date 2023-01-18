@@ -1,4 +1,5 @@
 using ContractManagementBL;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ContractManagementAPI.Controllers;
@@ -17,6 +18,7 @@ public class ContractManagementController : ControllerBase
         _contractManagementRepository = contractManagementRepository;
     }
 
+    [EnableCors("AllowOrigin")]
     [Route("GetCustomer")]
     [HttpGet]
     public IActionResult Get([FromQuery]string id)
@@ -40,7 +42,8 @@ public class ContractManagementController : ControllerBase
             return BadRequest(e.Message);
         }
     }
-    
+
+    [EnableCors("AllowOrigin")]
     [Route("CheckCustomer")]
     [HttpGet]
     public IActionResult GetCheckCustomer([FromQuery]string id)
@@ -65,6 +68,7 @@ public class ContractManagementController : ControllerBase
         }
     }
 
+    [EnableCors("AllowOrigin")]
     [Route("EditCustomer")]
     [HttpPost]
     public IActionResult PostEditCustomer([FromBody] EditCustomerAddressRequest editCustomerAddressRequest)

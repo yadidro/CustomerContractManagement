@@ -1,4 +1,6 @@
 {
+  "start": "ng serve --proxy-config proxy.conf.json",
+
   "name": "client-side",
   "version": "0.0.0",
   "scripts": {

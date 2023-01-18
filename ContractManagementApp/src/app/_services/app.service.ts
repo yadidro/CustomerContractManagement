@@ -1,14 +1,19 @@
 import { Injectable } from '@angular/core';
-import { Subject, Observable } from 'rxjs';
+import { Subject, Observable, Observer } from 'rxjs';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class AppService {
 
   private userLoggedIn = new Subject<boolean>();
 
-  constructor() {
+  private apiUrl = environment.apiUrl
+
+  constructor(private http: HttpClient) {
     this.userLoggedIn.next(false);
   }
 
@@ -18,5 +23,9 @@ export class AppService {
 
   getUserLoggedIn(): Observable<boolean> {
     return this.userLoggedIn.asObservable();
+  }
+
+  checkCustomer(id: string) {
+    return this.http.get<boolean>(this.apiUrl+'CheckCustomer?id='+id);
   }
 }
