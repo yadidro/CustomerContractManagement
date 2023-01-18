@@ -14,7 +14,7 @@ import { AppService } from './_services/app.service';
 })
 export class AppComponent {
 
-  idleState = 'Not started.';
+  idleState = '';
   timedOut = false;
   lastPing?: Date;
   title = 'angular-idle-timeout';
@@ -23,8 +23,6 @@ export class AppComponent {
 
   constructor(private idle: Idle, private keepalive: Keepalive, 
     private router: Router, private modalService: BsModalService, private appService: AppService) {
-    // sets an idle timeout of 5 minutes, for testing purposes.
-    idle.setIdle(300);
     // sets a timeout period of 5 minutes. after 10 seconds of inactivity, the user will be considered timed out.
     idle.setTimeout(300);
     // sets the default interrupts, in this case, things like clicks, scrolls, touches to the document
@@ -37,7 +35,6 @@ export class AppComponent {
     });
     
     idle.onTimeout.subscribe(() => {
-     // this.childModal.hide();
       this.idleState = 'Timed out!';
       this.timedOut = true;
       console.log(this.idleState);
@@ -47,7 +44,6 @@ export class AppComponent {
     idle.onIdleStart.subscribe(() => {
         this.idleState = 'You\'ve gone idle!'
         console.log(this.idleState);
-      //  this.childModal.show();
     });
     
     idle.onTimeoutWarning.subscribe((countdown) => {

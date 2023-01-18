@@ -76,7 +76,7 @@ export class DashboardComponent implements OnInit {
       this.textError = 'Text should not contain any special character';
       return;
     }
-
+    
     this.appService.EditCustomer(this.customerEditRequest).subscribe(
       () => {
           this.GetCustomer();
@@ -90,7 +90,7 @@ export class DashboardComponent implements OnInit {
   }
 
   checkInputValid(input: string): boolean {
-    return /^$|^[a-zA-ZÀ-ÖØ-öø-ÿ0-9 ]+$/.test(input);
+      return /^$|^[a-zA-ZÀ-ÖØ-öø-ÿ0-9 ]+$/.test(input);
   }
 
 }
