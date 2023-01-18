@@ -32,7 +32,6 @@ export class LoginComponent implements OnInit {
         if (res) {
           localStorage.setItem('id', this.model.id);
           this.appService.setUserLoggedIn(true)
-          this.showLogoutButton.emit();
           this.router.navigate(['/dashboard']);
         }
         else
