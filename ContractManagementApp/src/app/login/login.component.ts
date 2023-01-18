@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output , EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { AppService } from '../_services/app.service';
@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
         if (res) {
           localStorage.setItem('id', this.model.id);
           this.appService.setUserLoggedIn(true)
+          this.showLogoutButton.emit();
           this.router.navigate(['/dashboard']);
         }
         else

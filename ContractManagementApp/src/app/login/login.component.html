@@ -2,6 +2,7 @@
     <div class="loginbox">
         <div class="d-flex justify-content-md-center">
             <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+            
                 <h2 class="loginhead">Login</h2>
                 <div class="form-group">
                     <div [hidden]="!loginForm.submitted && !loginForm.valid"
@@ -13,9 +14,9 @@
                   </div>
                 <label for="exampleInputEmail1">ID</label>
                 <input type="text" [(ngModel)]="model.id" class="form-control" required name="id" placeholder="Enter id">
-                </div>
                 <div class="btnholder">
                     <button type="submit" class="btn btn-danger justify-content-md-center">Submit</button>
+                </div>
                 </div>
             </form>
         </div>

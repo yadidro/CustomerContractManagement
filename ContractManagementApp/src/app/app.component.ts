@@ -18,6 +18,7 @@ export class AppComponent {
   timedOut = false;
   lastPing?: Date;
   title = 'angular-idle-timeout';
+  showLogOut=false;
 
   //@ViewChild('childModal', { static: false }) childModal;
 
@@ -60,6 +61,7 @@ export class AppComponent {
       if (userLoggedIn) {
         idle.watch()
         this.timedOut = false;
+        this.showLogOut=true
       } else {
         idle.stop();
       }
@@ -78,6 +80,7 @@ export class AppComponent {
   logout() {
     this.appService.setUserLoggedIn(false);
     this.router.navigate(['/']);
+    this.showLogOut=false;
   }
 
 }
