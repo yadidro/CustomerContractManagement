@@ -1,4 +1,4 @@
-import { Component, Input, Output , EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { AppService } from '../_services/app.service';
 
 @Component({
@@ -15,9 +15,9 @@ export class AddressEditComponent {
 
   constructor(private appService: AppService) {
     this.customerEditRequest.id = this.userId;
-   }
+  }
 
-   ngOnInit() {
+  ngOnInit() {
     this.customerEditRequest.id = this.userId;
   }
 

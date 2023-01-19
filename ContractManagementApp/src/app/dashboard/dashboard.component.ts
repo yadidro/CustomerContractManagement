@@ -11,8 +11,8 @@ export class DashboardComponent implements OnInit {
   textError: string = '';
   public currentCustomer: Customer | undefined;
   public userId: string = '';
-  packageTypes:string[]=Object.values(PackageType)
-  contractTypes:string[]=Object.values(ContractType)
+  packageTypes: string[] = Object.values(PackageType)
+  contractTypes: string[] = Object.values(ContractType)
 
   constructor(private appService: AppService) { }
 
@@ -34,13 +34,13 @@ export class DashboardComponent implements OnInit {
       }
     );
   }
-  
+
   getContractType(value: string) {
     return this.contractTypes[Number(value)];
   }
 
   getPackgeType(value: string) {
     return this.packageTypes[Number(value)];
-    }
+  }
 }
 
