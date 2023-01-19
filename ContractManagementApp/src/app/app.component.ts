@@ -18,9 +18,9 @@ export class AppComponent {
   timedOut = false;
   lastPing?: Date;
   title = 'angular-idle-timeout';
-  showLogOut=false;
+  showLogOut = false;
 
-  constructor(private idle: Idle, private keepalive: Keepalive, 
+  constructor(private idle: Idle, private keepalive: Keepalive,
     private router: Router, private modalService: BsModalService, private appService: AppService) {
     // sets a timeout period of 5 minutes.
     idle.setTimeout(300);
@@ -28,24 +28,24 @@ export class AppComponent {
     // sets the default interrupts, in this case, things like clicks, scrolls, touches to the document
     idle.setInterrupts(DEFAULT_INTERRUPTSOURCES);
 
-    idle.onIdleEnd.subscribe(() => { 
+    idle.onIdleEnd.subscribe(() => {
       this.idleState = 'No longer idle.'
       console.log(this.idleState);
       this.reset();
     });
-    
+
     idle.onTimeout.subscribe(() => {
       this.idleState = 'Timed out!';
       this.timedOut = true;
       console.log(this.idleState);
       this.router.navigate(['/']);
     });
-    
+
     idle.onIdleStart.subscribe(() => {
-        this.idleState = 'You\'ve gone idle!'
-        console.log(this.idleState);
+      this.idleState = 'You\'ve gone idle!'
+      console.log(this.idleState);
     });
-    
+
     idle.onTimeoutWarning.subscribe((countdown) => {
       this.idleState = 'You will time out in ' + countdown + ' seconds!'
       console.log(this.idleState);
@@ -60,7 +60,7 @@ export class AppComponent {
       if (userLoggedIn) {
         idle.watch()
         this.timedOut = false;
-        this.showLogOut=true
+        this.showLogOut = true
       } else {
         idle.stop();
       }
@@ -80,7 +80,7 @@ export class AppComponent {
   logout() {
     this.appService.setUserLoggedIn(false);
     this.router.navigate(['/']);
-    this.showLogOut=false;
+    this.showLogOut = false;
   }
 
 }

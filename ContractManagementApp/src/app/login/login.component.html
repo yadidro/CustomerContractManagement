@@ -2,21 +2,21 @@
     <div class="loginbox">
         <div class="d-flex justify-content-md-center">
             <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
-            
+
                 <h2 class="loginhead">Login</h2>
                 <div class="form-group">
-                    <div [hidden]="!loginForm.submitted && !loginForm.valid"
-                        class="alert alert-danger">
-                     Please Fill the form
-                   </div>
-                   <div class="textError" *ngIf="textError != ''">
-                    <span style="font-style: italic">{{ textError }}</span>
-                  </div>
-                <label for="exampleInputEmail1">ID</label>
-                <input type="text" [(ngModel)]="model.id" class="form-control" required name="id" placeholder="Enter id">
-                <div class="btnholder">
-                    <button type="submit" class="btn btn-danger justify-content-md-center">Submit</button>
-                </div>
+                    <div [hidden]="!loginForm.submitted && !loginForm.valid" class="alert alert-danger">
+                        Please Fill the form
+                    </div>
+                    <div class="textError" *ngIf="textError != ''">
+                        <span style="font-style: italic">{{ textError }}</span>
+                    </div>
+                    <label for="exampleInputEmail1">ID</label>
+                    <input type="text" [(ngModel)]="model.id" class="form-control" required name="id"
+                        placeholder="Enter id">
+                    <div class="btnholder">
+                        <button type="submit" class="btn btn-danger justify-content-md-center">Submit</button>
+                    </div>
                 </div>
             </form>
         </div>

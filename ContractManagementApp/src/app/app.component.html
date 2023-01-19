@@ -1,18 +1,17 @@
 <app-header></app-header>
 <router-outlet></router-outlet>
 
-<div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1"
-     role="dialog" aria-labelledby="dialog-child-name">
+<div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-child-name">
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-body">
-         {{idleState}}
+        {{idleState}}
         <div class="row mrgbtm" *ngIf="this.showLogOut">
           <div class="col-md-6">
-              <button type="button" (click)="logout()" class="btn btn-danger">Logout</button>
+            <button type="button" (click)="logout()" class="btn btn-danger">Logout</button>
           </div>
           <div class="col-md-6">
-              <button type="button" (click)="stay()" class="btn btn-success">Stay</button>
+            <button type="button" (click)="stay()" class="btn btn-success">Stay</button>
           </div>
         </div>
       </div>
