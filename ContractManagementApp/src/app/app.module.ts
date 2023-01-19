@@ -14,13 +14,15 @@ import { NgIdleKeepaliveModule } from '@ng-idle/keepalive'; // this includes the
 import { MomentModule } from 'angular2-moment'; // optional, provides moment-style pipes for date formatting
 
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { AddressEditComponent } from './address-edit/address-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    AddressEditComponent
   ],
   imports: [
     BrowserModule,
