@@ -6,10 +6,10 @@
             <li>Street: {{ currentCustomer?.address?.street}}</li>
             <li>Home Number: {{ currentCustomer?.address?.homeNumber}}</li>
             <li>Postal Code: {{ currentCustomer?.address?.postalCode}}</li>
-
+<br>
             <app-address-edit [userId]="userId" (updateCustomer)="GetCustomer()" >
           </app-address-edit>
-          
+
             <ol *ngFor="let contract of currentCustomer?.contracts">
                 <tr>
                     <li>Contract number: {{contract.contractNumber}}</li>
